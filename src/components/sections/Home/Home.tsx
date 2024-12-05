@@ -1,7 +1,8 @@
 import React from 'react'
+import './Home.css'
 
 export const Home = () => {
   return (
-    <div>Home/Profile</div>
+    <div id='homecomponent'>Home/Profile</div>
   )
 }
