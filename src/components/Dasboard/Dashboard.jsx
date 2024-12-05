@@ -1,27 +1,20 @@
-import React from 'react'
-import { Route, Switch } from 'wouter';
+import React from 'react';
 import { Header } from './Header/Header';
 import { Sidebar } from './Sidebar/Sidebar';
-import { Home } from '../sections/Home/Home';
-import { CreateInitiative } from '../sections/CreateInitiative/CreateInitiative';
-import { NewInitiatives } from '../sections/NewInitiatives/NewInitiatives';
-import { Initiatives } from '../sections/Initiatives/Initiatives';
 
-export const Dashboard = () => {
+export const Dashboard = ({ children }) => {
     return (
-        <div>
-            <Header/>
+        <div className="dashboard-container">
+            {/* Header */}
+            <Header />
+
+            {/* Sidebar */}
             <Sidebar />
-            <div>
-                <main>
-                    <Switch>
-                        <Route path="/dashboard/home" component={Home} />
-                        <Route path="/dashboard/create-new" component={CreateInitiative} />
-                        <Route path="/dashboard/new-initiatives" component={NewInitiatives} />
-                        <Route path="/dashboard/initiatives" component={Initiatives} />
-                    </Switch>
-                </main>
+
+            {/* Main Content Area */}
+            <div className="dashboard-content">
+                <main>{children}</main>
             </div>
         </div>
     );
-}
+};
