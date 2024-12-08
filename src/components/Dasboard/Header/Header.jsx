@@ -6,7 +6,7 @@ import { useWalletConnect } from "../../../context/wallet-connect-context"; // A
 import "./Header.css";
 
 export const Header = ({ user, isAuthenticated }) => {
-  const { open, connectWallet, disconnectWallet, isConnected, userData } = useWalletConnect();
+  const { disconnectWallet, isConnected, userData } = useWalletConnect();
 
   return (
     <header className="header">
@@ -15,8 +15,8 @@ export const Header = ({ user, isAuthenticated }) => {
         <div
           id="wallet-icon"
           className="wallet"
-          onClick={() => connectWallet(null)} // Ejecuta la conexión al hacer clic
         >
+          <appkit-button label="Connect Wallet" size="sm" class="icon-button"></appkit-button>
           <img src={walletIcon} alt="Wallet" className="logo-img" />
         </div>
         <a href="/dashboard/home" className="user">
