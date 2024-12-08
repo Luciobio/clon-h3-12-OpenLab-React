@@ -2,6 +2,7 @@ import React from 'react';
 import { Header } from './Header/Header';
 import { Sidebar } from './Sidebar/Sidebar';
 import { useAuth0 } from "@auth0/auth0-react";
+import { WalletConnectProvider } from "../../context/wallet-connect-context";
 
 export const Dashboard = ({ children }) => {
 
@@ -13,7 +14,9 @@ export const Dashboard = ({ children }) => {
 
     return (
         <>
-            <Header user={user} isAuthenticated={isAuthenticated} />
+            <WalletConnectProvider>
+                <Header user={user} isAuthenticated={isAuthenticated} />
+            </WalletConnectProvider>
             <Sidebar />
 
             {/* Main Content Area */}
