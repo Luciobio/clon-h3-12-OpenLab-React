@@ -3,6 +3,7 @@ import { Header } from './Header/Header';
 import { Sidebar } from './Sidebar/Sidebar';
 import { useAuth0 } from "@auth0/auth0-react";
 import { WalletConnectProvider } from "../../context/wallet-connect-context";
+import './Dashboard.css';
 
 export const Dashboard = ({ children }) => {
 
@@ -13,18 +14,16 @@ export const Dashboard = ({ children }) => {
     }
 
     return (
-        <>
-            <WalletConnectProvider>
-                <Header user={user} isAuthenticated={isAuthenticated} />
-            </WalletConnectProvider>
+        <div className='dashboard'>
             <Sidebar />
-
-            {/* Main Content Area */}
-            <div className="dashboard-content">
-                <main>
+            <div>
+                <WalletConnectProvider>
+                    <Header user={user} isAuthenticated={isAuthenticated} />
+                </WalletConnectProvider>
+                <div className="main-content">
                     {React.cloneElement(children, { user, isAuthenticated })}
-                </main>
+                </div>
             </div>
-        </>
+        </div>
     );
 };
